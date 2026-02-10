@@ -1,0 +1,9 @@
+{
+  "name": "status-barber",
+  "version": "1.0.0",
+  "description": "BARBER STATUS website with booking and admin panel",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  }
+}

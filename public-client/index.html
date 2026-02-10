@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BARBER STATUS — Запись</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <header class="hero">
+    <div class="container">
+      <h1>BARBER STATUS</h1>
+      <p class="subtitle">Сайт для оформления записи</p>
+      <p class="address">Республика Дагестан, Дербент, улица Юрия Гагарина, 12</p>
+      <a class="btn" href="#booking">Оформить заявку</a>
+    </div>
+  </header>
+
+  <main class="container">
+    <section>
+      <h2>Услуги и цены</h2>
+      <div id="services" class="services-grid"></div>
+    </section>
+
+    <section id="booking" class="booking-section">
+      <h2>Онлайн-запись</h2>
+      <p>Запись сразу поступает администратору на отдельный сайт админа.</p>
+      <form id="bookingForm" class="booking-form">
+        <label>
+          Имя
+          <input type="text" name="name" required placeholder="Ваше имя" />
+        </label>
+        <label>
+          Телефон
+          <input type="tel" name="phone" required placeholder="+7 (___) ___-__-__" />
+        </label>
+        <label>
+          Услуга
+          <select name="serviceId" id="serviceSelect" required></select>
+        </label>
+        <label>
+          Дата и время
+          <input type="datetime-local" name="datetime" required />
+        </label>
+        <label>
+          Комментарий (необязательно)
+          <textarea name="comment" rows="3" placeholder="Например, удобное время после 18:00"></textarea>
+        </label>
+        <button class="btn" type="submit">Отправить заявку</button>
+      </form>
+      <p id="formMessage" class="form-message" role="status"></p>
+    </section>
+
+    <section>
+      <h2>Контакты</h2>
+      <p><strong>Телефон:</strong> <a href="tel:+79881234567">+7 (988) 123-45-67</a></p>
+      <p><strong>WhatsApp:</strong> <a href="tel:+79881234567">+7 (988) 123-45-67</a> (только номер для связи)</p>
+      <p><strong>Адрес:</strong> Республика Дагестан, Дербент, улица Юрия Гагарина, 12</p>
+    </section>
+  </main>
+
+  <script src="/main.js"></script>
+</body>
+</html>

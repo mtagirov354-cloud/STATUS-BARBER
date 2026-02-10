@@ -1,0 +1,121 @@
+:root {
+  color-scheme: dark;
+  --bg: #111217;
+  --card: #1a1c24;
+  --text: #f3f3f3;
+  --muted: #b8bcc8;
+  --accent: #c79b4a;
+  --danger: #d9534f;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: Inter, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.5;
+}
+
+.container {
+  width: min(1040px, 92vw);
+  margin: 0 auto;
+  padding: 2rem 0;
+}
+
+.hero {
+  background: linear-gradient(135deg, #1f222d, #101218);
+  border-bottom: 1px solid #2f3445;
+}
+
+h1, h2, h3 { margin-top: 0; }
+
+.subtitle { color: var(--accent); font-weight: 700; margin-bottom: 0.2rem; }
+.address { color: var(--muted); }
+
+.btn {
+  display: inline-block;
+  border: 0;
+  border-radius: 10px;
+  background: var(--accent);
+  color: #1b1404;
+  font-weight: 700;
+  cursor: pointer;
+  text-decoration: none;
+  padding: 0.7rem 1rem;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1rem;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid #303548;
+  border-radius: 14px;
+  padding: 1rem;
+}
+
+.card p { color: var(--muted); }
+
+.price {
+  color: var(--accent);
+  font-weight: 700;
+  margin-top: 0.75rem;
+}
+
+.booking-section {
+  margin-top: 2rem;
+  background: var(--card);
+  border-radius: 14px;
+  border: 1px solid #303548;
+  padding: 1rem;
+}
+
+.booking-form,
+.admin-auth {
+  display: grid;
+  gap: 0.9rem;
+  max-width: 560px;
+}
+
+label {
+  display: grid;
+  gap: 0.3rem;
+}
+
+input, select, textarea {
+  background: #0f1016;
+  color: var(--text);
+  border: 1px solid #353a4d;
+  border-radius: 8px;
+  padding: 0.65rem;
+}
+
+.form-message { font-weight: 600; min-height: 1.2rem; }
+.form-message.error { color: var(--danger); }
+.form-message.success { color: #5ccf8a; }
+
+.bookings-list {
+  display: grid;
+  gap: 0.8rem;
+}
+
+.booking-item {
+  background: var(--card);
+  border: 1px solid #303548;
+  border-radius: 12px;
+  padding: 0.9rem;
+}
+
+.booking-item small { color: var(--muted); }
+
+.status-row {
+  margin-top: 0.5rem;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
