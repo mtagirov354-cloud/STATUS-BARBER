@@ -6,6 +6,8 @@ const { URL } = require('url');
 const CLIENT_PORT = process.env.CLIENT_PORT || 3000;
 const ADMIN_PORT = process.env.ADMIN_PORT || 3001;
 const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || 'BARBERSTATUSADM';
+const CLIENT_HOST = process.env.CLIENT_HOST || '0.0.0.0';
+const ADMIN_HOST = process.env.ADMIN_HOST || '0.0.0.0';
 
 const clientDir = path.join(__dirname, 'public-client');
 const adminDir = path.join(__dirname, 'public-admin');
@@ -93,6 +95,11 @@ function serveStatic(req, res, pathname, rootDir) {
 }
 
 async function handleClientApi(req, res, pathname) {
+  if (req.method === 'GET' && pathname === '/health') {
+    sendJson(res, 200, { ok: true, site: 'client' });
+    return true;
+  }
+
   if (req.method === 'GET' && pathname === '/api/services') {
     sendJson(res, 200, services);
     return true;
@@ -196,6 +203,10 @@ const adminServer = http.createServer(async (req, res) => {
   const parsedUrl = new URL(req.url, `http://${req.headers.host}`);
   const { pathname } = parsedUrl;
 
+  if (req.method === 'GET' && pathname === '/health') {
+    return sendJson(res, 200, { ok: true, site: 'admin' });
+  }
+
   if (pathname.startsWith('/api/admin/')) {
     const handled = await handleAdminApi(req, res, pathname);
     if (handled) return;
@@ -205,11 +216,11 @@ const adminServer = http.createServer(async (req, res) => {
   serveStatic(req, res, pathname, adminDir);
 });
 
-clientServer.listen(CLIENT_PORT, () => {
-  console.log(`Client site: http://localhost:${CLIENT_PORT}`);
+clientServer.listen(CLIENT_PORT, CLIENT_HOST, () => {
+  console.log(`Client site: http://${CLIENT_HOST}:${CLIENT_PORT}`);
 });
 
-adminServer.listen(ADMIN_PORT, () => {
-  console.log(`Admin site: http://localhost:${ADMIN_PORT}`);
+adminServer.listen(ADMIN_PORT, ADMIN_HOST, () => {
+  console.log(`Admin site: http://${ADMIN_HOST}:${ADMIN_PORT}`);
   console.log(`Admin password: ${ADMIN_PASSWORD}`);
 });
